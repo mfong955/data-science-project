@@ -1,6 +1,6 @@
-# AI Workspace Template
+# Data Science Portfolio Project
 
-A lightweight, intelligent workspace template for AI-assisted project development. The AI learns your communication style and maintains project context across sessions without storing full chat histories.
+A lightweight, intelligent workspace for AI-assisted data science project development. This template is designed for building portfolio projects that demonstrate proficiency in modern data science tools including JAX, TensorFlow, PyTorch, SQL, and industry best practices.
 
 ---
 
@@ -10,25 +10,44 @@ A lightweight, intelligent workspace template for AI-assisted project developmen
 
 1. **Start Your Project**: Open this workspace in VSCode
 2. **Begin Working**: Start chatting with your AI assistant and ask it to read this file
-3. **AI Automatically**: Reads context files and understands your project
-4. **Work Naturally**: AI learns your preferences over time
+3. **AI Automatically**: Reads context files, personas, and understands your project
+4. **Work Naturally**: AI assumes appropriate persona based on task
 5. **Save Session**: Say "save session" - AI immediately saves all progress
 
 **That's it!** The system handles everything automatically.
 
 ---
 
+## Project Goals
+
+This workspace is designed to help you:
+- **Learn industry data science tools**: JAX, TensorFlow, PyTorch, SQL
+- **Build portfolio projects**: Using public datasets for GitHub showcase
+- **Apply scientific background**: Bridge research experience with industry practices
+- **Follow best practices**: Project structure, reproducibility, documentation
+
+---
+
 ## How It Works
 
 ### For AI
-The AI reads [`ai_system/rules/aiworkspace.md`](ai_system/rules/aiworkspace.md) which tells it to:
-1. Read [`ai_system/memory/user_profile.md`](ai_system/memory/user_profile.md) - Your communication style
-2. Read [`project/plan/goals.md`](project/plan/goals.md) - Project objectives
-3. Read [`project/plan/progress.md`](project/plan/progress.md) - Current status
-4. Read [`project/context/session_notes.md`](project/context/session_notes.md) - Last session context
-5. Read [`project/history/decisions.md`](project/history/decisions.md) - Recent decisions
 
-**Total: 5 files, ~500-700 tokens** - Fast and efficient!
+The AI reads these files at session start:
+
+1. **Personas** (Select appropriate expert role):
+   - [`ai_system/personas/data_science_personas.md`](ai_system/personas/data_science_personas.md) - **START HERE**
+
+2. **Rules** (Understand workspace behavior):
+   - [`ai_system/rules/aiworkspace.md`](ai_system/rules/aiworkspace.md)
+
+3. **User Understanding** (Communication style):
+   - [`ai_system/memory/user_profile.md`](ai_system/memory/user_profile.md)
+
+4. **Project Context**:
+   - [`project/plan/goals.md`](project/plan/goals.md) - Project objectives
+   - [`project/plan/progress.md`](project/plan/progress.md) - Current status
+   - [`project/context/session_notes.md`](project/context/session_notes.md) - Last session context
+   - [`project/history/decisions.md`](project/history/decisions.md) - Recent decisions
 
 ### For You
 - **Edit any file** to update preferences or project info
@@ -38,90 +57,157 @@ The AI reads [`ai_system/rules/aiworkspace.md`](ai_system/rules/aiworkspace.md) 
 
 ---
 
+## AI Personas
+
+This project uses specialized AI personas for different tasks. See [`ai_system/personas/data_science_personas.md`](ai_system/personas/data_science_personas.md) for full details.
+
+### Quick Reference
+
+| Persona | Slug | Primary Focus |
+|---------|------|---------------|
+| Data Engineer | `data-engineer` | SQL, pipelines, data infrastructure |
+| ML Engineer (PyTorch) | `ml-engineer-pytorch` | Deep learning, research flexibility |
+| ML Engineer (TensorFlow) | `ml-engineer-tensorflow` | Production ML, deployment |
+| ML Engineer (JAX) | `ml-engineer-jax` | High-performance, functional ML |
+| Data Scientist (Stats) | `data-scientist-stats` | Statistical modeling, inference |
+| MLOps Engineer | `mlops-engineer` | Experiment tracking, deployment |
+| Data Viz Specialist | `data-viz-specialist` | Visualization, dashboards |
+| Project Architect | `project-architect` | Structure, standards, planning |
+
+### Invoking a Persona
+
+- **Explicit**: "As the Data Engineer, help me design a schema for..."
+- **Task-based**: AI automatically selects based on task type
+- **Multi-persona**: "I need the Data Engineer and MLOps Engineer to collaborate on..."
+
+---
+
 ## Repository Structure
 
 ```
 your-project/
-├── README.md                          # This file
-├── .ai/
-│   └── rules/
-│       └── aiworkspace.md            # AI's instruction file
+├── README.md                              # This file
 ├── ai_system/
+│   ├── personas/
+│   │   └── data_science_personas.md       # AI personas for multi-agent workflow
 │   ├── memory/
-│   │   └── user_profile.md           # Your communication style & preferences
+│   │   └── user_profile.md                # Your communication style & preferences
+│   ├── rules/
+│   │   └── aiworkspace.md                 # AI's instruction file
 │   └── templates/
-│       ├── app_project_template.md   # Template for app projects
-│       └── story_project_template.md # Template for story projects
+│       ├── data_science_project_template.md  # Data science project structure
+│       ├── app_project_template.md        # Template for app projects
+│       └── story_project_template.md      # Template for story projects
 └── project/
     ├── plan/
-    │   ├── goals.md                  # What you want to achieve
-    │   └── progress.md               # Current status & next steps
+    │   ├── goals.md                       # What you want to achieve
+    │   └── progress.md                    # Current status & next steps
     ├── context/
-    │   └── session_notes.md          # Current session working memory
-    └── history/
-        └── decisions.md              # Decision log & session summaries
+    │   └── session_notes.md               # Current session working memory
+    ├── history/
+    │   └── decisions.md                   # Decision log & session summaries
+    ├── user_resources/                    # Your reference materials
+    ├── data/                              # Data files
+    │   ├── raw/                           # Original, immutable data
+    │   ├── processed/                     # Cleaned, transformed data
+    │   ├── interim/                       # Intermediate transformations
+    │   └── external/                      # External data sources
+    ├── notebooks/                         # Jupyter notebooks
+    │   ├── exploratory/                   # EDA and experimentation
+    │   ├── modeling/                      # Model development
+    │   └── reports/                       # Final analysis notebooks
+    ├── src/                               # Production code
+    │   ├── data/                          # Data loading and processing
+    │   ├── features/                      # Feature engineering
+    │   ├── models/                        # Model definitions
+    │   ├── training/                      # Training scripts
+    │   ├── evaluation/                    # Evaluation metrics
+    │   └── utils/                         # Utility functions
+    ├── models/                            # Model artifacts
+    │   ├── trained/                       # Saved models
+    │   ├── checkpoints/                   # Training checkpoints
+    │   └── configs/                       # Model configurations
+    ├── experiments/                       # Experiment tracking
+    │   ├── logs/                          # Training logs
+    │   └── results/                       # Experiment results
+    ├── visualizations/                    # Visualization outputs
+    │   ├── figures/                       # Static figures
+    │   └── dashboards/                    # Dashboard code
+    ├── sql/                               # Database files
+    │   ├── queries/                       # SQL queries
+    │   ├── schemas/                       # Schema definitions
+    │   └── migrations/                    # Migration scripts
+    ├── tests/                             # Test files
+    │   ├── unit/                          # Unit tests
+    │   ├── integration/                   # Integration tests
+    │   └── data_validation/               # Data quality tests
+    ├── docs/                              # Documentation
+    │   ├── guides/                        # How-to guides
+    │   ├── api/                           # API documentation
+    │   └── research/                      # Research notes
+    └── configs/                           # Configuration files
+        ├── environments/                  # Environment configs
+        └── pipelines/                     # Pipeline configs
 ```
 
 ---
 
-## File Purposes
+## Learning Path
 
-### User Information (ai_system/memory/)
+This project is designed to help you learn these tools:
 
-#### [`user_profile.md`](ai_system/memory/user_profile.md)
-**What**: Your communication style and working preferences
-**Contains**:
-- How you like to ask questions
-- Your preferred response style
-- Working preferences
-- Confidence scores for each pattern
+### Core Tools to Learn
 
-**You can edit**: Yes! Update anytime to correct or add preferences
+1. **SQL** (Data Engineer persona)
+   - PostgreSQL, SQLite
+   - Query optimization
+   - Database design
+
+2. **PyTorch** (ML Engineer - PyTorch persona)
+   - Tensors and autograd
+   - Neural network architectures
+   - Custom training loops
+
+3. **TensorFlow** (ML Engineer - TensorFlow persona)
+   - Keras API
+   - tf.data pipelines
+   - Model deployment
+
+4. **JAX** (ML Engineer - JAX persona)
+   - Functional programming
+   - jit, grad, vmap transformations
+   - High-performance computing
+
+5. **MLOps Tools** (MLOps Engineer persona)
+   - MLflow / Weights & Biases
+   - Experiment tracking
+   - Reproducibility
+
+6. **Visualization** (Data Viz Specialist persona)
+   - matplotlib, seaborn
+   - Plotly
+   - Streamlit dashboards
 
 ---
 
-### Project Information (project/)
+## Public Data Sources
 
-#### [`project/plan/goals.md`](project/plan/goals.md)
-**What**: Project objectives and what you want to achieve
-**Contains**:
-- Project name and type
-- Main objectives
-- Success criteria
-- Timeline (optional)
+For portfolio projects, consider these accessible data sources:
 
-**You can edit**: Yes! Update as your goals evolve
+### General Purpose
+- [Kaggle Datasets](https://www.kaggle.com/datasets)
+- [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)
+- [Google Dataset Search](https://datasetsearch.research.google.com/)
 
-#### [`project/plan/progress.md`](project/plan/progress.md)
-**What**: Current state and progress
-**Contains**:
-- Current phase
-- Completed milestones
-- Active tasks
-- Next steps
-- Blockers
+### Government & Open Data
+- [Data.gov](https://data.gov/)
+- [World Bank Open Data](https://data.worldbank.org/)
+- [EU Open Data Portal](https://data.europa.eu/)
 
-**You can edit**: Yes! Update regularly to track progress
-
-#### [`project/context/session_notes.md`](project/context/session_notes.md)
-**What**: Temporary working memory for current session
-**Contains**:
-- What you're working on right now
-- Recent decisions this session
-- Patterns observed
-- Notes for next session
-
-**You can edit**: Yes! Add notes for next session
-**Note**: AI clears this at session end (important info saved elsewhere)
-
-#### [`project/history/decisions.md`](project/history/decisions.md)
-**What**: Chronicle of decisions and session summaries
-**Contains**:
-- Major project decisions with reasoning
-- Session summaries
-- Project evolution over time
-
-**You can edit**: Yes! Add context or decisions anytime
+### Domain-Specific
+- [NOAA Climate Data](https://www.ncdc.noaa.gov/data-access)
+- [NIH/NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets/)
+- [NYC Open Data](https://opendata.cityofnewyork.us/)
 
 ---
 
@@ -129,12 +215,12 @@ your-project/
 
 ### Session Start
 1. You open workspace and start chatting
-2. AI reads the 5 context files
+2. AI reads personas and context files
 3. AI greets you with summary of where you left off
 4. AI asks what you want to work on today
 
 ### During Session
-- AI tracks interactions
+- AI assumes appropriate persona for task
 - Updates session_notes.md with current context
 - Every 10 interactions: Checks for patterns to extract
 - On major decisions: Updates history/decisions.md
@@ -146,141 +232,25 @@ your-project/
 4. AI clears session_notes.md
 5. AI provides session summary
 
-**Note**: The command "save session" is explicit - AI will not ask for confirmation, it will proceed immediately with saving.
-
----
-
-## Editing Files
-
-### When to Edit
-
-**Edit anytime you want to:**
-- Correct AI's understanding of your preferences
-- Update project goals or status
-- Add important context
-- Record decisions manually
-- Add notes for next session
-
-### How to Edit
-
-1. Open the file in your editor
-2. Make your changes
-3. Save the file
-4. AI will see changes at next session start
-
-### What to Edit
-
-**user_profile.md**: 
-- Add or correct communication preferences
-- Update working style preferences
-- Set confidence to 100% for user-specified items
-
-**goals.md**: 
-- Update objectives as they evolve
-- Add or remove goals
-- Update timeline
-
-**progress.md**: 
-- Mark tasks complete
-- Add new tasks
-- Update current phase
-- Note blockers
-
-**session_notes.md**: 
-- Add notes for next session
-- Clarify current context
-
-**decisions.md**: 
-- Add important decisions
-- Provide additional context
-- Record insights
-
----
-
-## Benefits
-
-✅ **Lightweight**: Only 5 core files, ~500-700 tokens to read
-✅ **Automatic**: AI handles memory management
-✅ **Transparent**: See exactly what AI knows
-✅ **Editable**: Full control over all information
-✅ **Efficient**: Fixed context usage, scales indefinitely
-✅ **Smart**: AI learns patterns, not conversations
-✅ **Continuous**: Seamless context across sessions
-
----
-
-## Project Templates
-
-### Starting a New Project
-
-The AI can help you set up project structure using templates:
-
-**For Application/Software Projects**:
-- Uses [`ai_system/templates/app_project_template.md`](ai_system/templates/app_project_template.md)
-- Creates: requirements/, design/, documentation/, resources/
-
-**For Story/Novel Projects**:
-- Uses [`ai_system/templates/story_project_template.md`](ai_system/templates/story_project_template.md)
-- Creates: characters/, settings/, plot/, research/, drafts/
-
-**For Other Projects**:
-- AI adapts structure based on your needs
-- All project files go in `project/` directory
-
 ---
 
 ## Tips for Best Results
 
 ### For Users
 
-1. **Be explicit about preferences**: Tell AI what you like/dislike
-2. **Update files regularly**: Keep goals.md and progress.md current
-3. **Review user_profile.md**: Check if AI understood you correctly
-4. **Save sessions**: Say "save session" when you want to save progress
-5. **Add notes**: Use session_notes.md to leave notes for next time
+1. **Be explicit about what you want to learn**: Tell AI which tools you want to focus on
+2. **Invoke personas explicitly**: "As the Data Engineer..." for focused help
+3. **Update files regularly**: Keep goals.md and progress.md current
+4. **Review user_profile.md**: Check if AI understood you correctly
+5. **Save sessions**: Say "save session" when you want to save progress
 
 ### For AI Integration
 
-1. **Always read initialization files**: At start of every session
-2. **Update incrementally**: Don't wait until session end
-3. **Extract patterns**: Note repeated behaviors
-4. **Use confidence scores**: Only save patterns you're confident about
+1. **Always read personas file first**: Understand available expert roles
+2. **Select appropriate persona**: Based on current task
+3. **Update incrementally**: Don't wait until session end
+4. **Extract patterns**: Note repeated behaviors
 5. **Keep files concise**: Extract insights, not conversations
-
----
-
-## Troubleshooting
-
-### AI doesn't remember context
-→ Check if AI read the initialization files
-→ Manually remind: "Please read the context files"
-
-### AI misunderstands preferences
-→ Edit `ai_system/memory/user_profile.md` directly
-→ Set confidence to 100% for your corrections
-
-### Project info is outdated
-→ Edit `project/plan/goals.md` or `progress.md`
-→ AI will see updates at next session
-
-### Session notes too long
-→ AI should auto-compress
-→ Manually ask: "Please compress session notes"
-
----
-
-## What's Next
-
-This template is designed to be:
-- **Lightweight**: Minimal files, maximum efficiency
-- **Flexible**: Adapts to any project type
-- **Extensible**: Ready for future enhancements (web dashboard, analytics, etc.)
-
-Future enhancements could include:
-- Web dashboard for visual memory management
-- Automatic session detection
-- Analytics and insights
-- Team collaboration features
 
 ---
 
@@ -289,17 +259,8 @@ Future enhancements could include:
 1. **Clone or use this template**
 2. **Open in VSCode** with AI assistant
 3. **Start chatting** - AI will guide you through setup
-4. **Edit files** as needed to match your preferences
-5. **Work naturally** - AI learns and adapts
-
----
-
-## Support
-
-- **File Structure**: See repository structure above
-- **File Purposes**: See "File Purposes" section
-- **How It Works**: See "How It Works" section
-- **Editing Guide**: See "Editing Files" section
+4. **Describe your project idea** - AI helps select appropriate data and approach
+5. **Work with personas** - Get expert-level guidance for each aspect
 
 ---
 

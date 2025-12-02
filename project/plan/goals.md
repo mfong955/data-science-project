@@ -9,85 +9,97 @@
 ## Project Overview
 
 ### Project Name
-[Your project name]
+Data Science Portfolio Project
 
 ### Project Type
-[Story/Novel/Application/Website/Other]
+Data Science / Machine Learning
 
 ### Description
-[Brief description of what this project is about]
+A portfolio project to demonstrate proficiency in modern data science tools and practices. This project will use public datasets to build end-to-end ML pipelines while learning industry-standard tools.
 
 ---
 
 ## Main Objectives
 
 ### Primary Goal
-[What is the main thing you want to accomplish?]
+Build a portfolio-worthy data science project for GitHub that demonstrates proficiency in industry tools (JAX, TensorFlow, PyTorch, SQL) while applying scientific research background.
 
 ### Secondary Goals
-- [Additional objective 1]
-- [Additional objective 2]
-- [Additional objective 3]
+- Learn and apply PyTorch for deep learning
+- Learn and apply TensorFlow/Keras for production ML
+- Learn and apply JAX for high-performance computing
+- Develop SQL skills for data engineering
+- Implement MLOps best practices (experiment tracking, reproducibility)
+- Create compelling visualizations and dashboards
+
+---
+
+## Learning Priorities
+
+### Tools to Learn (in order of priority)
+1. **SQL** - Foundation for data engineering
+2. **PyTorch** - Deep learning fundamentals
+3. **TensorFlow** - Production ML and deployment
+4. **JAX** - High-performance numerical computing
+5. **MLOps tools** - MLflow, experiment tracking
+
+### Skills to Demonstrate
+- End-to-end ML pipeline development
+- Data engineering and SQL proficiency
+- Statistical modeling (leveraging research background)
+- Clean, well-documented code
+- Reproducible experiments
 
 ---
 
 ## Success Criteria
 
 ### How will you know this project is successful?
-- [Criterion 1]
-- [Criterion 2]
-- [Criterion 3]
+- Project is complete and hosted on GitHub
+- Demonstrates proficiency in at least 3 major tools (PyTorch, TensorFlow, SQL)
+- Includes clear documentation and README
+- Shows end-to-end workflow from data to model to visualization
+- Code follows industry best practices
 
 ---
 
 ## Scope
 
 ### In Scope
-[What is included in this project]
+- Using public, easily accessible datasets
+- Learning core data science tools
+- Building reproducible ML pipelines
+- Creating visualizations and dashboards
+- Writing documentation
 
 ### Out of Scope
-[What is explicitly NOT included]
+- Production deployment to cloud
+- Real-time inference systems
+- Proprietary or restricted data
 
 ---
 
 ## Timeline (Optional)
 
 ### Target Completion
-[Date or timeframe, if applicable]
+[To be determined based on project selection]
 
 ### Key Milestones
-- [Milestone 1]: [Target date]
-- [Milestone 2]: [Target date]
-- [Milestone 3]: [Target date]
+- [ ] Select dataset and define specific project
+- [ ] Set up data pipeline with SQL
+- [ ] Implement baseline model
+- [ ] Experiment with different frameworks (PyTorch, TensorFlow, JAX)
+- [ ] Add experiment tracking
+- [ ] Create visualizations and dashboard
+- [ ] Write documentation and polish for GitHub
 
 ---
 
 ## Notes
 
-[Any additional context about your goals]
+**Background**: User has scientific research experience with statistical modeling and custom ML algorithms. Self-taught but not familiar with common industry data science tools. Looking to bridge research skills with industry practices.
 
----
-
-## AI Update Instructions
-
-### When to Update This File
-- **First-time setup**: When user describes their project for the first time
-- **Goal changes**: When user explicitly changes or adds objectives
-- **Scope changes**: When project scope is redefined
-- **User request**: When user asks to update goals
-
-### How to Update
-1. Ask user for clarification if goals are ambiguous
-2. Fill in relevant sections based on user's description
-3. Keep language clear and concise
-4. Preserve user's intent and wording when possible
-5. Leave sections blank if information not provided (don't make assumptions)
-
-### What NOT to Do
-- Don't invent goals the user hasn't mentioned
-- Don't change goals without user confirmation
-- Don't add technical details here (those go in project files)
-- Don't duplicate information from progress.md
+**Next Step**: Work with AI to select an interesting public dataset and define a specific project scope.
 
 ---
 

@@ -6,6 +6,25 @@
 
 ---
 
+## Background
+
+### Professional Background
+**Confidence**: 100% (User-specified)
+- Scientific research experience
+- Statistical modeling expertise
+- Built custom ML algorithms for large datasets
+- Self-taught in data science/ML
+- Looking to learn industry-standard tools
+
+### Learning Goals
+**Confidence**: 100% (User-specified)
+- Learn JAX, TensorFlow, PyTorch, SQL
+- Understand industry data science practices
+- Build portfolio projects for job applications
+- Bridge research skills with industry tools
+
+---
+
 ## Communication Style
 
 ### Question Patterns
@@ -21,32 +40,44 @@
 - **Frustration Triggers**: [What to avoid]
 
 ### Collaboration Preference
-**Confidence**: 0% (0 observations)
-- **Initiative Level**: [AI should lead/follow/balance]
-- **Explanation Depth**: [Minimal/Moderate/Comprehensive]
-- **Autonomy**: [Ask first vs. take action]
+**Confidence**: 60% (User-specified)
+- **Initiative Level**: AI should provide guidance but user drives decisions
+- **Explanation Depth**: Moderate to comprehensive (learning context)
+- **Autonomy**: Prefer working code over placeholders
 
 ---
 
 ## Working Preferences
 
 ### Organization Style
-**Confidence**: 0% (0 observations)
-- **File Structure**: [Hierarchical/Flat/Custom preference]
-- **Naming Convention**: [Preferred naming patterns]
-- **Documentation Level**: [Minimal/Standard/Comprehensive]
+**Confidence**: 60% (User-specified)
+- **File Structure**: Hierarchical, following data science best practices
+- **Naming Convention**: [To be learned]
+- **Documentation Level**: Standard to comprehensive
 
 ### Technical Preferences
-**Confidence**: 0% (0 observations)
-- **Code Style**: [Formatting preferences, if applicable]
-- **Tools**: [Preferred tools or technologies]
-- **Detail Level**: [High-level/Detailed/Context-dependent]
+**Confidence**: 60% (User-specified)
+- **Code Style**: Prefers working examples over placeholders
+- **Tools**: Learning PyTorch, TensorFlow, JAX, SQL
+- **Detail Level**: Comprehensive when learning new tools
 
 ### Decision Making
 **Confidence**: 0% (0 observations)
 - **Style**: [Quick/Deliberate/Collaborative]
 - **Information Needs**: [What user needs to decide]
 - **Change Tolerance**: [Conservative/Moderate/Experimental]
+
+---
+
+## Known Preferences
+
+### Explicitly Stated
+**Confidence**: 100% (User-specified)
+- Avoid placeholders that get overlooked
+- Keep things lightweight
+- Prefer working code examples
+- Want to learn industry tools
+- Building for GitHub portfolio
 
 ---
 
@@ -88,33 +119,6 @@
 - **Every 10 interactions**: Review and extract clear patterns
 - **Session end**: Update with all observed patterns
 - **User correction**: Update immediately with high confidence
-
-### How to Update
-1. Increment observation count for relevant category
-2. Recalculate confidence percentage
-3. Update pattern description with specific examples
-4. Note any exceptions or contradictions
-5. Remove patterns that are consistently contradicted
-
----
-
-## User Editing Instructions
-
-**You can edit this file directly!** 
-
-If you notice the AI has:
-- Misunderstood your preferences
-- Missed an important pattern
-- Recorded something incorrectly
-
-Simply edit this file and save. The AI will read the updated version at the start of the next session.
-
-**Format for adding preferences:**
-```markdown
-### [Category Name]
-**Confidence**: 100% (User-specified)
-- [Your preference description]
-```
 
 ---
 
