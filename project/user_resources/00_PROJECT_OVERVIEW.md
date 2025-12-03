@@ -26,16 +26,67 @@ This project demonstrates:
 ## 📁 Project Structure
 
 ```
-ecommerce-analysis/
-├── 00_PROJECT_OVERVIEW.md          ← You are here
-├── 01_SETUP_GUIDE.md               ← Environment setup instructions
-├── 02_DATASET_INFO.md              ← Dataset description and features
-├── 03_ANALYSIS_PLAN.md             ← Detailed analysis roadmap
-├── 04_SQL_QUERIES.md               ← SQL practice queries
-├── 05_CODE_TEMPLATES.md            ← Python code snippets
-├── 06_RESUME_BULLETS.md            ← Resume updates and talking points
-├── 07_AI_ASSISTANT_PROMPT.md      ← Instructions for AI helper
-└── project/plan/progress.md        ← Track your progress here
+data-science-project/
+├── README.md                              # Main project README
+├── ai_system/
+│   ├── personas/
+│   │   └── data_science_personas.md       # AI personas for multi-agent workflow
+│   ├── memory/
+│   │   └── user_profile.md                # User preferences and background
+│   ├── rules/
+│   │   └── aiworkspace.md                 # AI workspace rules
+│   └── templates/
+│       └── data_science_project_template.md
+└── project/
+    ├── plan/
+    │   ├── goals.md                       # Project objectives
+    │   └── progress.md                    # Current status & tracking
+    ├── context/
+    │   └── session_notes.md               # Session working memory
+    ├── history/
+    │   └── decisions.md                   # Decision log
+    ├── user_resources/                    # Planning documents (you are here)
+    │   ├── 00_PROJECT_OVERVIEW.md         ← You are here
+    │   ├── 01_SETUP_GUIDE.md
+    │   ├── 02_DATASET_INFO.md
+    │   ├── 03_ANALYSIS_PLAN.md
+    │   ├── 04_SQL_QUERIES.md
+    │   ├── 05_CODE_TEMPLATES.md
+    │   ├── 06_RESUME_BULLETS.md
+    │   └── 07_AI_ASSISTANT_PROMPT.md
+    ├── data/
+    │   ├── raw/
+    │   │   └── consumer_behavior_dataset.csv  # Dataset (downloaded)
+    │   ├── processed/                     # Cleaned data
+    │   └── external/                      # External sources
+    ├── notebooks/
+    │   ├── exploratory/                   # EDA notebooks
+    │   ├── modeling/                      # Model development
+    │   └── reports/                       # Final analysis
+    ├── src/                               # Python source code
+    │   ├── data/                          # Data loading/processing
+    │   ├── features/                      # Feature engineering
+    │   ├── models/                        # Model definitions
+    │   ├── training/                      # Training scripts
+    │   ├── evaluation/                    # Evaluation metrics
+    │   └── utils/                         # Utility functions
+    ├── models/
+    │   ├── trained/                       # Saved models
+    │   ├── checkpoints/                   # Training checkpoints
+    │   └── configs/                       # Model configurations
+    ├── experiments/
+    │   ├── logs/                          # Training logs
+    │   └── results/                       # Experiment results
+    ├── visualizations/
+    │   ├── figures/                       # Static figures
+    │   └── dashboards/                    # Dashboard code
+    ├── sql/
+    │   ├── queries/                       # SQL query files
+    │   ├── schemas/                       # Schema definitions
+    │   └── migrations/                    # Migration scripts
+    ├── tests/                             # Test files
+    ├── docs/                              # Documentation
+    └── configs/                           # Configuration files
 ```
 
 ---
@@ -78,9 +129,9 @@ ecommerce-analysis/
 
 1. **Read files in order** (01 → 02 → 03...)
 2. **Set up environment** (follow 01_SETUP_GUIDE.md)
-3. **Download dataset** from Kaggle
+3. **Dataset already downloaded** to `project/data/raw/consumer_behavior_dataset.csv`
 4. **Start coding** with templates from 05_CODE_TEMPLATES.md
-5. **Track progress** in project/plan/progress.md
+5. **Track progress** in `project/plan/progress.md`
 
 ---
 
@@ -123,9 +174,10 @@ When working with Matthew on this project:
 2. He's targeting the OpenAI Product Data Scientist role
 3. His strengths: PhD-level statistics, 10+ years Python, research rigor
 4. Areas to refresh: Modern data science tools, SQL, product analytics
-5. Update project/plan/progress.md with completed milestones
+5. **Update `project/plan/progress.md`** with completed milestones
 6. Emphasize practical application over theory
 7. Connect analyses back to business value and resume bullets
+8. Dataset is at: `project/data/raw/consumer_behavior_dataset.csv`
 
 ---
 

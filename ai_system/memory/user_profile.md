@@ -10,18 +10,46 @@
 
 ### Professional Background
 **Confidence**: 100% (User-specified)
-- Scientific research experience
-- Statistical modeling expertise
-- Built custom ML algorithms for large datasets
-- Self-taught in data science/ML
-- Looking to learn industry-standard tools
+- **Education**: PhD in Physics & Astrophysics (strong statistical foundation)
+- **Experience**: 10+ years Python experience
+- **Current Role**: AWS AI/ML Technical Writer
+- **Research**: Built custom ML algorithms for large datasets, statistical modeling
+- **Teaching**: Taught AI courses to AWS employees (excellent communication skills)
+
+### Career Goals
+**Confidence**: 100% (User-specified)
+- **Target Role**: Data Scientist, Product at OpenAI
+- **Transition**: Moving from technical writing to data science
+- **Timeline**: 2-week portfolio project completion
 
 ### Learning Goals
 **Confidence**: 100% (User-specified)
-- Learn JAX, TensorFlow, PyTorch, SQL
-- Understand industry data science practices
+- Learn modern data science tools (Pandas 2.0, Plotly, scikit-learn)
+- Develop SQL proficiency (CTEs, window functions, complex joins)
+- Master A/B testing and statistical rigor
 - Build portfolio projects for job applications
-- Bridge research skills with industry tools
+- Bridge research skills with industry product analytics
+
+---
+
+## Strengths to Leverage
+
+**Confidence**: 100% (User-specified)
+- PhD-level statistical foundation
+- 10+ years Python proficiency
+- Research rigor and scientific method
+- Teaching and communication skills
+- Self-directed learning ability
+
+---
+
+## Areas to Refresh
+
+**Confidence**: 100% (User-specified)
+- Modern data science tools (Pandas 2.0, Plotly)
+- SQL (needs practice with advanced queries)
+- Product analytics mindset (vs. academic research)
+- Industry best practices and workflows
 
 ---
 
@@ -29,15 +57,15 @@
 
 ### Question Patterns
 **Confidence**: 0% (0 observations)
-- **Style**: [Direct/Exploratory/Detailed - to be learned]
-- **Typical Approach**: [How user typically asks questions]
-- **Response Preference**: [Brief/Detailed/With examples]
+- **Style**: [To be learned]
+- **Typical Approach**: [To be learned]
+- **Response Preference**: [To be learned]
 
 ### Feedback Style
 **Confidence**: 0% (0 observations)
-- **Correction Method**: [Direct/Suggestive/Explanatory]
-- **Satisfaction Signals**: [What indicates user is happy]
-- **Frustration Triggers**: [What to avoid]
+- **Correction Method**: [To be learned]
+- **Satisfaction Signals**: [To be learned]
+- **Frustration Triggers**: [To be learned]
 
 ### Collaboration Preference
 **Confidence**: 60% (User-specified)
@@ -52,20 +80,22 @@
 ### Organization Style
 **Confidence**: 60% (User-specified)
 - **File Structure**: Hierarchical, following data science best practices
-- **Naming Convention**: [To be learned]
-- **Documentation Level**: Standard to comprehensive
+- **Naming Convention**: Numbered files (00_, 01_, etc.) for ordering
+- **Documentation Level**: Comprehensive (portfolio project)
 
 ### Technical Preferences
-**Confidence**: 60% (User-specified)
-- **Code Style**: Prefers working examples over placeholders
-- **Tools**: Learning PyTorch, TensorFlow, JAX, SQL
-- **Detail Level**: Comprehensive when learning new tools
+**Confidence**: 100% (User-specified)
+- **Code Style**: Prefers complete, working code (not pseudocode)
+- **Comments**: Add explanatory comments
+- **Best Practices**: Use modern practices (Pandas 2.0, type hints)
+- **Error Handling**: Include error handling
+- **Copy-Paste Ready**: Code should be immediately usable
 
 ### Decision Making
 **Confidence**: 0% (0 observations)
-- **Style**: [Quick/Deliberate/Collaborative]
-- **Information Needs**: [What user needs to decide]
-- **Change Tolerance**: [Conservative/Moderate/Experimental]
+- **Style**: [To be learned]
+- **Information Needs**: [To be learned]
+- **Change Tolerance**: [To be learned]
 
 ---
 
@@ -78,6 +108,44 @@
 - Prefer working code examples
 - Want to learn industry tools
 - Building for GitHub portfolio
+- Target: OpenAI Product Data Scientist role
+
+### Teaching Approach Preferences
+**Confidence**: 60% (From AI assistant prompt)
+- Start with intuition, then technical details
+- Use analogies (mathematical analogies work well for physicist)
+- Connect to research background when relevant
+- Provide examples with actual dataset
+
+---
+
+## AI Interaction Guidelines
+
+### When Providing Code
+- Provide complete, working code (not pseudocode)
+- Add explanatory comments
+- Use modern best practices
+- Include error handling
+- Make it copy-paste ready
+
+### When Explaining Concepts
+- Start with intuition, then technical details
+- Use mathematical analogies (physicist background)
+- Connect to research experience when relevant
+- Provide examples with the actual dataset
+
+### When Matthew is Stuck
+- Troubleshoot systematically
+- Provide multiple solution approaches
+- Explain why errors occurred
+- Encourage good debugging practices
+
+### When Completing Sections
+- **Update `project/plan/progress.md`**
+- Celebrate the win
+- Review key learnings
+- Preview next steps
+- Suggest resume bullet points
 
 ---
 
@@ -95,30 +163,6 @@
 - Consistent behavior over 10+ interactions → 70%+ confidence
 - User correction → Reset and update with high confidence
 - Contradictory behavior → Reduce confidence, note exception
-
----
-
-## Update Guidelines
-
-### What to Extract
-✅ **DO Extract:**
-- Explicit preferences ("I prefer X over Y")
-- Repeated behaviors (same approach 3+ times)
-- Corrections to AI assumptions
-- Communication style patterns
-- Satisfaction/frustration signals
-
-❌ **DON'T Extract:**
-- One-off comments
-- Conversational filler
-- Temporary context
-- Uncertain observations (wait for confirmation)
-
-### When to Update
-- **During session**: Note patterns in project/context/session_notes.md
-- **Every 10 interactions**: Review and extract clear patterns
-- **Session end**: Update with all observed patterns
-- **User correction**: Update immediately with high confidence
 
 ---
 

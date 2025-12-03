@@ -2,13 +2,17 @@
 
 ## 📅 2-Week Project Timeline
 
+**Dataset Location:** `project/data/raw/consumer_behavior_dataset.csv`  
+**Notebooks Location:** `project/notebooks/`  
+**Progress Tracking:** `project/plan/progress.md`
+
 ---
 
 ## WEEK 1: Foundation & Core Analysis
 
 ### 🎯 Analysis 1: Exploratory Data Analysis (EDA) & Metrics
 **Timeline:** Day 1-3  
-**Notebook:** `01_exploratory_data_analysis.ipynb`
+**Notebook:** `project/notebooks/exploratory/01_exploratory_data_analysis.ipynb`
 
 #### Objectives
 - Understand data structure and quality
@@ -27,6 +31,9 @@
 
 **Data Quality Assessment**
 ```python
+# Load from project structure
+df = pd.read_csv('../../data/raw/consumer_behavior_dataset.csv')
+
 # Missing values
 # Duplicates
 # Outliers
@@ -70,7 +77,7 @@
 
 ### 🎯 Analysis 2: Customer Segmentation & Cohort Analysis
 **Timeline:** Day 4-7  
-**Notebook:** `02_customer_segmentation.ipynb`
+**Notebook:** `project/notebooks/exploratory/02_customer_segmentation.ipynb`
 
 #### Objectives
 - Identify distinct customer personas
@@ -146,7 +153,7 @@
 
 ### 🎯 Analysis 3: Predictive Modeling
 **Timeline:** Day 8-10  
-**Notebook:** `03_predictive_modeling.ipynb`
+**Notebook:** `project/notebooks/modeling/03_predictive_modeling.ipynb`
 
 #### Objectives
 - Build model to predict purchase decisions
@@ -246,6 +253,11 @@
 - [ ] Prediction probability distribution
 - [ ] Business value calculation
 
+#### Where to Save Models
+- Trained models: `project/models/trained/`
+- Model configs: `project/models/configs/`
+- Experiment logs: `project/experiments/logs/`
+
 #### Business Impact Calculation
 ```python
 # Example:
@@ -262,7 +274,7 @@
 
 ### 🎯 Analysis 4: A/B Test Analysis & Causal Inference
 **Timeline:** Day 11-12  
-**Notebook:** `04_ab_test_analysis.ipynb`
+**Notebook:** `project/notebooks/modeling/04_ab_test_analysis.ipynb`
 
 #### Objectives
 - Demonstrate experimentation rigor
@@ -377,8 +389,8 @@
 
 ### 🎯 Analysis 5: Business Recommendations & Dashboard
 **Timeline:** Day 13-14  
-**Notebook:** `05_business_recommendations.ipynb`  
-**Dashboard:** `dashboard/streamlit_app.py`
+**Notebook:** `project/notebooks/reports/05_business_recommendations.ipynb`  
+**Dashboard:** `project/visualizations/dashboards/streamlit_app.py` (optional)
 
 #### Objectives
 - Synthesize all findings
@@ -426,7 +438,7 @@ Solution: Real-time prediction of purchase intent
 Expected Impact: +12% conversion lift for targeted users
 ```
 
-**3. Interactive Dashboard**
+**3. Interactive Dashboard (Optional)**
 
 Using Streamlit, create dashboard with:
 
@@ -458,6 +470,10 @@ Using Streamlit, create dashboard with:
 - [ ] Interactive dashboard (optional)
 - [ ] Implementation roadmap
 
+#### Where to Save
+- Figures: `project/visualizations/figures/`
+- Dashboard: `project/visualizations/dashboards/`
+
 #### Resume Bullet
 *"Created data-driven business recommendations identifying $2M+ annual revenue opportunity through cart abandonment reduction and segment-targeted promotions, with interactive dashboard for stakeholder self-service analytics"*
 
@@ -465,8 +481,8 @@ Using Streamlit, create dashboard with:
 
 ## 📊 SQL Component (Throughout Project)
 
-**File:** `sql_queries/analysis_queries.sql`  
-**Database:** SQLite (`ecommerce.db`)
+**File Location:** `project/sql/queries/`  
+**Database:** SQLite (`project/data/processed/ecommerce.db`)
 
 ### SQL Queries to Write
 
@@ -541,6 +557,18 @@ Each analysis maps to job requirements:
 | "Strategic insights beyond stats" | Analysis 5 - causal thinking |
 | "SQL and Python" | Throughout |
 | "Navigate ambiguous environments" | Self-directed project |
+
+---
+
+## 📁 File Organization Summary
+
+| Notebook | Location |
+|----------|----------|
+| 01_exploratory_data_analysis.ipynb | `project/notebooks/exploratory/` |
+| 02_customer_segmentation.ipynb | `project/notebooks/exploratory/` |
+| 03_predictive_modeling.ipynb | `project/notebooks/modeling/` |
+| 04_ab_test_analysis.ipynb | `project/notebooks/modeling/` |
+| 05_business_recommendations.ipynb | `project/notebooks/reports/` |
 
 ---
 

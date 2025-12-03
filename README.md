@@ -1,267 +1,182 @@
-# Data Science Portfolio Project
+# E-Commerce Purchase Prediction & Customer Journey Optimization
 
-A lightweight, intelligent workspace for AI-assisted data science project development. This template is designed for building portfolio projects that demonstrate proficiency in modern data science tools including JAX, TensorFlow, PyTorch, SQL, and industry best practices.
+A comprehensive data science portfolio project analyzing consumer behavior patterns, building predictive models, and generating actionable business insights.
 
----
-
-## Quick Start
-
-### For Users
-
-1. **Start Your Project**: Open this workspace in VSCode
-2. **Begin Working**: Start chatting with your AI assistant and ask it to read this file
-3. **AI Automatically**: Reads context files, personas, and understands your project
-4. **Work Naturally**: AI assumes appropriate persona based on task
-5. **Save Session**: Say "save session" - AI immediately saves all progress
-
-**That's it!** The system handles everything automatically.
+**Target Role**: Data Scientist, Product at OpenAI  
+**Timeline**: 2 weeks  
+**Dataset**: AI-Driven Consumer Behavior Dataset (Kaggle, 2025)
 
 ---
 
-## Project Goals
+## 🎯 Project Overview
 
-This workspace is designed to help you:
-- **Learn industry data science tools**: JAX, TensorFlow, PyTorch, SQL
-- **Build portfolio projects**: Using public datasets for GitHub showcase
-- **Apply scientific background**: Bridge research experience with industry practices
-- **Follow best practices**: Project structure, reproducibility, documentation
-
----
-
-## How It Works
-
-### For AI
-
-The AI reads these files at session start:
-
-1. **Personas** (Select appropriate expert role):
-   - [`ai_system/personas/data_science_personas.md`](ai_system/personas/data_science_personas.md) - **START HERE**
-
-2. **Rules** (Understand workspace behavior):
-   - [`ai_system/rules/aiworkspace.md`](ai_system/rules/aiworkspace.md)
-
-3. **User Understanding** (Communication style):
-   - [`ai_system/memory/user_profile.md`](ai_system/memory/user_profile.md)
-
-4. **Project Context**:
-   - [`project/plan/goals.md`](project/plan/goals.md) - Project objectives
-   - [`project/plan/progress.md`](project/plan/progress.md) - Current status
-   - [`project/context/session_notes.md`](project/context/session_notes.md) - Last session context
-   - [`project/history/decisions.md`](project/history/decisions.md) - Recent decisions
-
-### For You
-- **Edit any file** to update preferences or project info
-- **AI sees changes** automatically at next session
-- **Full transparency** - see exactly what AI knows
-- **Full control** - edit files anytime
+This project demonstrates:
+- ✅ Product metrics definition and tracking
+- ✅ Customer segmentation and cohort analysis
+- ✅ Predictive modeling (purchase conversion)
+- ✅ A/B test design and statistical analysis
+- ✅ SQL proficiency for data analysis
+- ✅ Business recommendations from data insights
 
 ---
 
-## AI Personas
-
-This project uses specialized AI personas for different tasks. See [`ai_system/personas/data_science_personas.md`](ai_system/personas/data_science_personas.md) for full details.
-
-### Quick Reference
-
-| Persona | Slug | Primary Focus |
-|---------|------|---------------|
-| Data Engineer | `data-engineer` | SQL, pipelines, data infrastructure |
-| ML Engineer (PyTorch) | `ml-engineer-pytorch` | Deep learning, research flexibility |
-| ML Engineer (TensorFlow) | `ml-engineer-tensorflow` | Production ML, deployment |
-| ML Engineer (JAX) | `ml-engineer-jax` | High-performance, functional ML |
-| Data Scientist (Stats) | `data-scientist-stats` | Statistical modeling, inference |
-| MLOps Engineer | `mlops-engineer` | Experiment tracking, deployment |
-| Data Viz Specialist | `data-viz-specialist` | Visualization, dashboards |
-| Project Architect | `project-architect` | Structure, standards, planning |
-
-### Invoking a Persona
-
-- **Explicit**: "As the Data Engineer, help me design a schema for..."
-- **Task-based**: AI automatically selects based on task type
-- **Multi-persona**: "I need the Data Engineer and MLOps Engineer to collaborate on..."
-
----
-
-## Repository Structure
+## 📁 Repository Structure
 
 ```
-your-project/
+data-science-project/
 ├── README.md                              # This file
 ├── ai_system/
 │   ├── personas/
 │   │   └── data_science_personas.md       # AI personas for multi-agent workflow
 │   ├── memory/
-│   │   └── user_profile.md                # Your communication style & preferences
+│   │   └── user_profile.md                # User preferences and background
 │   ├── rules/
-│   │   └── aiworkspace.md                 # AI's instruction file
+│   │   └── aiworkspace.md                 # AI workspace rules
 │   └── templates/
-│       ├── data_science_project_template.md  # Data science project structure
-│       ├── app_project_template.md        # Template for app projects
-│       └── story_project_template.md      # Template for story projects
+│       └── data_science_project_template.md
 └── project/
     ├── plan/
-    │   ├── goals.md                       # What you want to achieve
-    │   └── progress.md                    # Current status & next steps
+    │   ├── goals.md                       # Project objectives
+    │   └── progress.md                    # Current status & tracking
     ├── context/
-    │   └── session_notes.md               # Current session working memory
+    │   └── session_notes.md               # Session working memory
     ├── history/
-    │   └── decisions.md                   # Decision log & session summaries
-    ├── user_resources/                    # Your reference materials
+    │   └── decisions.md                   # Decision log
+    ├── user_resources/                    # Planning documents
+    │   ├── 00_PROJECT_OVERVIEW.md
+    │   ├── 01_SETUP_GUIDE.md
+    │   ├── 02_DATASET_INFO.md
+    │   ├── 03_ANALYSIS_PLAN.md
+    │   ├── 04_SQL_QUERIES.md
+    │   ├── 05_CODE_TEMPLATES.md
+    │   ├── 06_RESUME_BULLETS.md
+    │   └── 07_AI_ASSISTANT_PROMPT.md
     ├── data/                              # Data files
-    │   ├── raw/                           # Original, immutable data
-    │   ├── processed/                     # Cleaned, transformed data
-    │   ├── interim/                       # Intermediate transformations
-    │   └── external/                      # External data sources
+    │   ├── raw/                           # Original data
+    │   ├── processed/                     # Cleaned data
+    │   └── external/                      # External sources
     ├── notebooks/                         # Jupyter notebooks
-    │   ├── exploratory/                   # EDA and experimentation
+    │   ├── exploratory/                   # EDA notebooks
     │   ├── modeling/                      # Model development
-    │   └── reports/                       # Final analysis notebooks
-    ├── src/                               # Production code
-    │   ├── data/                          # Data loading and processing
-    │   ├── features/                      # Feature engineering
-    │   ├── models/                        # Model definitions
-    │   ├── training/                      # Training scripts
-    │   ├── evaluation/                    # Evaluation metrics
-    │   └── utils/                         # Utility functions
-    ├── models/                            # Model artifacts
-    │   ├── trained/                       # Saved models
-    │   ├── checkpoints/                   # Training checkpoints
-    │   └── configs/                       # Model configurations
+    │   └── reports/                       # Final analysis
+    ├── src/                               # Python source code
+    ├── models/                            # Trained models
     ├── experiments/                       # Experiment tracking
-    │   ├── logs/                          # Training logs
-    │   └── results/                       # Experiment results
-    ├── visualizations/                    # Visualization outputs
-    │   ├── figures/                       # Static figures
-    │   └── dashboards/                    # Dashboard code
-    ├── sql/                               # Database files
-    │   ├── queries/                       # SQL queries
-    │   ├── schemas/                       # Schema definitions
-    │   └── migrations/                    # Migration scripts
+    ├── visualizations/                    # Plots and dashboards
+    ├── sql/                               # SQL queries
     ├── tests/                             # Test files
-    │   ├── unit/                          # Unit tests
-    │   ├── integration/                   # Integration tests
-    │   └── data_validation/               # Data quality tests
     ├── docs/                              # Documentation
-    │   ├── guides/                        # How-to guides
-    │   ├── api/                           # API documentation
-    │   └── research/                      # Research notes
     └── configs/                           # Configuration files
-        ├── environments/                  # Environment configs
-        └── pipelines/                     # Pipeline configs
 ```
 
 ---
 
-## Learning Path
+## 🚀 Quick Start
 
-This project is designed to help you learn these tools:
+### For AI Assistants
 
-### Core Tools to Learn
+At the start of each session, read these files in order:
 
-1. **SQL** (Data Engineer persona)
-   - PostgreSQL, SQLite
-   - Query optimization
-   - Database design
+1. [`ai_system/personas/data_science_personas.md`](ai_system/personas/data_science_personas.md) - Available expert personas
+2. [`ai_system/memory/user_profile.md`](ai_system/memory/user_profile.md) - User background and preferences
+3. [`project/plan/goals.md`](project/plan/goals.md) - Project objectives
+4. [`project/plan/progress.md`](project/plan/progress.md) - Current status
+5. [`project/user_resources/07_AI_ASSISTANT_PROMPT.md`](project/user_resources/07_AI_ASSISTANT_PROMPT.md) - Detailed AI instructions
 
-2. **PyTorch** (ML Engineer - PyTorch persona)
-   - Tensors and autograd
-   - Neural network architectures
-   - Custom training loops
+### For Development
 
-3. **TensorFlow** (ML Engineer - TensorFlow persona)
-   - Keras API
-   - tf.data pipelines
-   - Model deployment
-
-4. **JAX** (ML Engineer - JAX persona)
-   - Functional programming
-   - jit, grad, vmap transformations
-   - High-performance computing
-
-5. **MLOps Tools** (MLOps Engineer persona)
-   - MLflow / Weights & Biases
-   - Experiment tracking
-   - Reproducibility
-
-6. **Visualization** (Data Viz Specialist persona)
-   - matplotlib, seaborn
-   - Plotly
-   - Streamlit dashboards
+1. Follow setup instructions in [`01_SETUP_GUIDE.md`](project/user_resources/01_SETUP_GUIDE.md)
+2. Download dataset from Kaggle
+3. Start with [`03_ANALYSIS_PLAN.md`](project/user_resources/03_ANALYSIS_PLAN.md) for roadmap
 
 ---
 
-## Public Data Sources
+## 📊 Planned Analyses
 
-For portfolio projects, consider these accessible data sources:
-
-### General Purpose
-- [Kaggle Datasets](https://www.kaggle.com/datasets)
-- [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)
-- [Google Dataset Search](https://datasetsearch.research.google.com/)
-
-### Government & Open Data
-- [Data.gov](https://data.gov/)
-- [World Bank Open Data](https://data.worldbank.org/)
-- [EU Open Data Portal](https://data.europa.eu/)
-
-### Domain-Specific
-- [NOAA Climate Data](https://www.ncdc.noaa.gov/data-access)
-- [NIH/NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets/)
-- [NYC Open Data](https://opendata.cityofnewyork.us/)
+| # | Analysis | Notebook | Status |
+|---|----------|----------|--------|
+| 1 | EDA & Metrics | 01_exploratory_data_analysis.ipynb | Not Started |
+| 2 | Customer Segmentation | 02_customer_segmentation.ipynb | Not Started |
+| 3 | Predictive Modeling | 03_predictive_modeling.ipynb | Not Started |
+| 4 | A/B Test Analysis | 04_ab_test_analysis.ipynb | Not Started |
+| 5 | Business Recommendations | 05_business_recommendations.ipynb | Not Started |
 
 ---
 
-## How Sessions Work
+## 🎓 Skills Demonstrated
 
-### Session Start
-1. You open workspace and start chatting
-2. AI reads personas and context files
-3. AI greets you with summary of where you left off
-4. AI asks what you want to work on today
+### For OpenAI Product Data Scientist Role
 
-### During Session
-- AI assumes appropriate persona for task
-- Updates session_notes.md with current context
-- Every 10 interactions: Checks for patterns to extract
-- On major decisions: Updates history/decisions.md
-
-### Save Session
-1. You say **"save session"**
-2. AI immediately extracts session insights
-3. AI updates all relevant files
-4. AI clears session_notes.md
-5. AI provides session summary
+1. **Product Analytics** - Define north-star metrics, conversion funnels, user engagement
+2. **Statistical Rigor** - A/B test design, hypothesis testing, confidence intervals
+3. **Machine Learning** - Binary classification, feature engineering, model evaluation
+4. **Technical Skills** - Python (Pandas, scikit-learn), SQL, Plotly
+5. **Communication** - Executive summaries, data storytelling, recommendations
 
 ---
 
-## Tips for Best Results
+## 📚 Reference Documents
 
-### For Users
+All detailed planning documents are in `project/user_resources/`:
 
-1. **Be explicit about what you want to learn**: Tell AI which tools you want to focus on
-2. **Invoke personas explicitly**: "As the Data Engineer..." for focused help
-3. **Update files regularly**: Keep goals.md and progress.md current
-4. **Review user_profile.md**: Check if AI understood you correctly
-5. **Save sessions**: Say "save session" when you want to save progress
-
-### For AI Integration
-
-1. **Always read personas file first**: Understand available expert roles
-2. **Select appropriate persona**: Based on current task
-3. **Update incrementally**: Don't wait until session end
-4. **Extract patterns**: Note repeated behaviors
-5. **Keep files concise**: Extract insights, not conversations
+| File | Description |
+|------|-------------|
+| [`00_PROJECT_OVERVIEW.md`](project/user_resources/00_PROJECT_OVERVIEW.md) | High-level project context |
+| [`01_SETUP_GUIDE.md`](project/user_resources/01_SETUP_GUIDE.md) | Environment setup instructions |
+| [`02_DATASET_INFO.md`](project/user_resources/02_DATASET_INFO.md) | Dataset documentation |
+| [`03_ANALYSIS_PLAN.md`](project/user_resources/03_ANALYSIS_PLAN.md) | Detailed 2-week roadmap |
+| [`04_SQL_QUERIES.md`](project/user_resources/04_SQL_QUERIES.md) | SQL query templates |
+| [`05_CODE_TEMPLATES.md`](project/user_resources/05_CODE_TEMPLATES.md) | Python code templates |
+| [`06_RESUME_BULLETS.md`](project/user_resources/06_RESUME_BULLETS.md) | Resume and interview prep |
+| [`07_AI_ASSISTANT_PROMPT.md`](project/user_resources/07_AI_ASSISTANT_PROMPT.md) | AI assistant instructions |
 
 ---
 
-## Getting Started
+## 🤖 AI Personas
 
-1. **Clone or use this template**
-2. **Open in VSCode** with AI assistant
-3. **Start chatting** - AI will guide you through setup
-4. **Describe your project idea** - AI helps select appropriate data and approach
-5. **Work with personas** - Get expert-level guidance for each aspect
+This project uses specialized AI personas for different tasks:
+
+| Persona | Focus |
+|---------|-------|
+| Data Engineer | SQL, pipelines, data infrastructure |
+| ML Engineer (PyTorch) | Deep learning, research flexibility |
+| ML Engineer (TensorFlow) | Production ML, deployment |
+| Data Scientist (Stats) | Statistical modeling, inference |
+| MLOps Engineer | Experiment tracking, deployment |
+| Data Viz Specialist | Visualization, dashboards |
+| Project Architect | Structure, standards, planning |
+
+See [`ai_system/personas/data_science_personas.md`](ai_system/personas/data_science_personas.md) for details.
 
 ---
 
-**Ready to start?** Open your workspace and begin chatting with the AI!
+## 📈 Expected Outcomes
+
+By completing this project:
+- [ ] 5 comprehensive Jupyter notebooks on GitHub
+- [ ] Professional README with key findings
+- [ ] 3-4 strong resume bullets
+- [ ] SQL queries demonstrating proficiency
+- [ ] Predictive model with >0.80 AUC
+- [ ] A/B test analysis with statistical rigor
+- [ ] Business recommendations with estimated impact
+
+---
+
+## 👤 Author
+
+Matthew Fong  
+- PhD Physics & Astrophysics
+- 10+ years Python experience
+- Currently: AWS AI/ML Technical Writer
+- Target: OpenAI Product Data Scientist
+
+---
+
+## 📝 License
+
+This project is for portfolio and educational purposes.
+
+---
+
+**Next Step**: Follow [`01_SETUP_GUIDE.md`](project/user_resources/01_SETUP_GUIDE.md) to set up your environment!
