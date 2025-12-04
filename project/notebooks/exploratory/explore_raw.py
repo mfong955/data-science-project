@@ -205,6 +205,20 @@ for col in cols:  # Only loop over non user/product-ids
 
 # **Bivariate Analysis**
 # Conversion rate by category (product, demographics, etc.)
+categories = ["category", "rating", "purchase_week", "gender", "age"]
+
+for cats in categories:
+    conversion_by_category = df.groupby(cats).agg(
+        {"purchase_decision": ["sum", "count"]}
+    )
+    conversion_by_category.columns = ["Purchases", "Total_Records"]
+    conversion_by_category.plot(kind="bar")
+
+    plt.figure(figsize=(8, 5))
+    df.groupby(cats)["purchase_decision"].mean().plot(
+        kind="bar", title=f"Frequency of purchases by {cats}"
+    )
+
 # Price vs conversion relationship
 # Session duration vs conversion
 # Correlation matrix
@@ -216,6 +230,3 @@ for col in cols:  # Only loop over non user/product-ids
 # - Average session duration
 # - Average pages per session
 # - Bounce rate (1-page sessions)
-
-
-# %%
