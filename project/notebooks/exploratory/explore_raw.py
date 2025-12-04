@@ -159,12 +159,26 @@ sum(
 
 # **Univariate Analysis**
 # Distribution of numeric features (histograms, box plots)
+# Frequency of categorical features (bar charts)
+# Summary statistics for all features
+# Each purhcase has an associated day. I will convert the purchase_date to week (ind)
+# Convert purchase_date to purchase_week (1, 2, 3, etc.)
+min_week = df["purchase_date"].dt.isocalendar().week.min()
+df["purchase_week"] = df["purchase_date"].dt.isocalendar().week - min_week + 1
+df["weekly_purchases"] = (
+    df.groupby(pd.Grouper(key="purchase_date", freq="W"))["purchase_date"]
+    .transform("size")
+    .astype("int64")
+)
+
+
 cols = [
     "category",
     "price",
     "discount_applied",
     "payment_method",
-    "purchase_date",
+    # "purchase_date",
+    "purchase_week",
     "pages_visited",
     "time_spent",
     "add_to_cart",
@@ -178,6 +192,7 @@ cols = [
 ]
 for col in cols:  # Only loop over non user/product-ids
     plt.figure(figsize=(8, 5))  # Create a new figure for each plot
+    print(df[col].describe())
     if pd.api.types.is_numeric_dtype(df[col]):
         df[col].plot(kind="hist", title=f"Histogram of {col}")
     elif pd.api.types.is_datetime64_any_dtype(df[col]):
@@ -187,9 +202,6 @@ for col in cols:  # Only loop over non user/product-ids
     elif pd.api.types.is_object_dtype(df[col]):
         df[col].value_counts().plot(kind="bar", title=f"Value counts of {col}")
 
-
-# Frequency of categorical features (bar charts)
-# Summary statistics for all features
 
 # **Bivariate Analysis**
 # Conversion rate by category (product, demographics, etc.)
