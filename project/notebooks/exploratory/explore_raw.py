@@ -1,5 +1,6 @@
 import pandas as pd
 from pathlib import Path
+import matplotlib.pyplot as plt
 
 # Get the project root directory (3 levels up from this file)
 # This file is in: project/notebooks/exploratory/explore_raw.py
@@ -49,35 +50,43 @@ df["pages_visited"].describe()
 df["time_spent"].describe()
 
 # Weekend vs weekday purchases
-df['purchase_date'] = pd.to_datetime(df['purchase_date'])
-df['purchase_date'].dt.dayofweek.describe()
-df['is_weekend'] = df['purchase_date'].dt.dayofweek >= 5
+df["purchase_date"] = pd.to_datetime(df["purchase_date"])
+df["purchase_date"].dt.dayofweek.describe()
+df["is_weekend"] = df["purchase_date"].dt.dayofweek >= 5
 
-df['purchase_decision'][df['is_weekend'] == 1].sum()
-df['purchase_decision'][df['is_weekend'] == 0].sum()
-weekend_purchases_percentile = df['purchase_decision'][df['is_weekend'] == 1].sum() / df['purchase_decision'].sum() * 100
-weekday_purchases_percentile = df['purchase_decision'][df['is_weekend'] == 0].sum() / df['purchase_decision'].sum() * 100
+df["purchase_decision"][df["is_weekend"] == 1].sum()
+df["purchase_decision"][df["is_weekend"] == 0].sum()
+weekend_purchases_percentile = (
+    df["purchase_decision"][df["is_weekend"] == 1].sum()
+    / df["purchase_decision"].sum()
+    * 100
+)
+weekday_purchases_percentile = (
+    df["purchase_decision"][df["is_weekend"] == 0].sum()
+    / df["purchase_decision"].sum()
+    * 100
+)
 print(f"Weekend purchases: {weekend_purchases_percentile:.2f}%")
 print(f"Weekday purchases: {weekday_purchases_percentile:.2f}%")
 
 
 # Engagement score
-df['engagement_score'] = df['pages_visited'] * df['time_spent']
-df['engagement_score'].describe()
+df["engagement_score"] = df["pages_visited"] * df["time_spent"]
+df["engagement_score"].describe()
 
 # Price features
-df['price_after_discount'] = df['price'] * (1 - df['discount_applied'] / 100)
-df['discount_amount'] = df['price'] * df['discount_applied'] / 100
+df["price_after_discount"] = df["price"] * (1 - df["discount_applied"] / 100)
+df["discount_amount"] = df["price"] * df["discount_applied"] / 100
 
 # Behavioral flags
-df['high_engagement'] = (df['pages_visited'] > df['pages_visited'].median()).astype(int)
-df['cart_converted'] = ((df['add_to_cart'] == 1) & (df['purchase_decision'] == 1)).astype(int)
-df['high_engagement'].describe()
-df['cart_converted'].describe()
+df["high_engagement"] = (df["pages_visited"] > df["pages_visited"].median()).astype(int)
+df["cart_converted"] = (
+    (df["add_to_cart"] == 1) & (df["purchase_decision"] == 1)
+).astype(int)
+df["high_engagement"].describe()
+df["cart_converted"].describe()
 
-df['purchase_decision'].value_counts(
-    normalize=True
-    )
+df["purchase_decision"].value_counts(normalize=True)
 
 
 # Missing values
@@ -88,21 +97,113 @@ print(df.isnull().sum())
 print(f"\nDuplicate Rows: {df.duplicated().sum()}")
 
 # Unique values for categoricals
-for col in ['category', 'gender', 'income_level', 'payment_method', 'location']:
+for col in ["category", "gender", "income_level", "payment_method", "location"]:
     print(f"\n{col}: {df[col].nunique()} unique values")
     print(df[col].value_counts())
 
+#### Objectives
+# - Understand data structure and quality
+# - Define key product metrics
+# - Identify initial patterns and relationships
+# - Create baseline for comparison
+
+#### Key Questions
+# 1. What's the overall conversion rate?
+# 2. How is the target variable distributed?
+# 3. Are there missing values or data quality issues?
+# 4. What are the distributions of key features?
+# 5. How do features correlate with purchase decisions?
+
+#### Analyses to Perform
+
+# **Data Quality Assessment**
+# Load from project structure
+df = pd.read_csv("../../data/raw/consumer_behavior_dataset.csv")
+
+# Missing values
+df.isnull().sum()
+
+# Duplicates
+df.duplicated().sum()
+
+# Outliers
+df.sort_index(axis=0).describe()
+# Need to plot histograms/boxplots for better outlier detection
+
+# Data type verification
+df.dtypes
+
+# Logical consistency checks
+
+# Check for impossible values (e.g., negative prices)
+df["price"][df["price"] < 0]
+
+# Verify date ranges
+df["purchase_date"] = pd.to_datetime(df["purchase_date"])
+df["purchase_date"].min(), df["purchase_date"].max()
+
+# Check for inconsistent categories
+df["category"].unique()
+
+# Validate relationships between features
+df["add_to_cart"][df["purchase_decision"] == 1].value_counts()
+sum(df["add_to_cart"]) - sum(df["abandoned_cart"])
+sum(df["purchase_decision"])
+
+sum(df["abandoned_cart"])
+sum(df["add_to_cart"][df["abandoned_cart"] == 1])
+sum(
+    df["add_to_cart"][df["abandoned_cart"] == 0]
+)  # matches sum(df['purchase_decision'])
 
 
+# **Univariate Analysis**
+# Distribution of numeric features (histograms, box plots)
+cols = [
+    "category",
+    "price",
+    "discount_applied",
+    "payment_method",
+    "purchase_date",
+    "pages_visited",
+    "time_spent",
+    "add_to_cart",
+    "abandoned_cart",
+    "rating",
+    "sentiment_score",
+    "age",
+    "gender",
+    "income_level",
+    "purchase_decision",
+]
+for col in cols:  # Only loop over non user/product-ids
+    plt.figure(figsize=(8, 5))  # Create a new figure for each plot
+    if pd.api.types.is_numeric_dtype(df[col]):
+        df[col].plot(kind="hist", title=f"Histogram of {col}")
+    elif pd.api.types.is_datetime64_any_dtype(df[col]):
+        df[col].value_counts().sort_index().plot(
+            kind="bar", title=f"Frequency of {col} over time"
+        )
+    elif pd.api.types.is_object_dtype(df[col]):
+        df[col].value_counts().plot(kind="bar", title=f"Value counts of {col}")
 
 
+# Frequency of categorical features (bar charts)
+# Summary statistics for all features
+
+# **Bivariate Analysis**
+# Conversion rate by category (product, demographics, etc.)
+# Price vs conversion relationship
+# Session duration vs conversion
+# Correlation matrix
+
+# **Key Metrics to Calculate**
+# - Overall conversion rate
+# - Cart abandonment rate
+# - Average Order Value (AOV)
+# - Average session duration
+# - Average pages per session
+# - Bounce rate (1-page sessions)
 
 
-
-
-
-
-
-
-
-
+# %%
