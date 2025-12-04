@@ -2,9 +2,7 @@
 
 A comprehensive data science portfolio project analyzing consumer behavior patterns, building predictive models, and generating actionable business insights.
 
-**Target Role**: Data Scientist, Product at OpenAI  
-**Timeline**: 2 weeks  
-**Dataset**: AI-Driven Consumer Behavior Dataset (Kaggle, 2025)
+**Dataset**: [AI-Driven Consumer Behavior Dataset (Kaggle, 2025)](https://www.kaggle.com/datasets/ziya07/ai-driven-consumer-behavior-dataset/data/code)
 
 ---
 
