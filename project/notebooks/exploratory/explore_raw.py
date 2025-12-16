@@ -1,6 +1,8 @@
 import pandas as pd
 from pathlib import Path
 import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
 
 # Get the project root directory (3 levels up from this file)
 # This file is in: project/notebooks/exploratory/explore_raw.py
@@ -10,6 +12,12 @@ PROJECT_ROOT = Path(__file__).parent.parent.parent
 # Load from our project structure using absolute path
 DATA_PATH = PROJECT_ROOT / "data" / "raw" / "consumer_behavior_dataset.csv"
 print(f"Loading data from: {DATA_PATH}")
+
+# Define path for saving figures (as per 03_ANALYSIS_PLAN.md line 473)
+FIGURES_PATH = PROJECT_ROOT / "visualizations" / "figures"
+# Ensure the figures directory exists
+FIGURES_PATH.mkdir(parents=True, exist_ok=True)
+print(f"Figures will be saved to: {FIGURES_PATH}")
 
 df = pd.read_csv(DATA_PATH)
 
@@ -202,6 +210,15 @@ for col in cols:  # Only loop over non user/product-ids
     elif pd.api.types.is_object_dtype(df[col]):
         df[col].value_counts().plot(kind="bar", title=f"Value counts of {col}")
 
+    # plt.savefig() - Saves the current figure to a file (first use)
+    # Parameters:
+    #   fname - File path (can be string or Path object)
+    #   dpi - Resolution in dots per inch (higher = better quality)
+    #   bbox_inches='tight' - Removes extra whitespace around the figure
+    plt.tight_layout()
+    plt.savefig(FIGURES_PATH / f"univariate_{col}.png", dpi=150, bbox_inches="tight")
+    plt.close()  # Close figure to free memory
+
 
 # **Bivariate Analysis**
 # Conversion rate by category (product, demographics, etc.)
@@ -213,20 +230,191 @@ for cats in categories:
     )
     conversion_by_category.columns = ["Purchases", "Total_Records"]
     conversion_by_category.plot(kind="bar")
+    plt.title(f"Purchases and Total Records by {cats}")
+    plt.tight_layout()
+    plt.savefig(
+        FIGURES_PATH / f"bivariate_{cats}_counts.png", dpi=150, bbox_inches="tight"
+    )
+    plt.close()
 
     plt.figure(figsize=(8, 5))
     df.groupby(cats)["purchase_decision"].mean().plot(
-        kind="bar", title=f"Frequency of purchases by {cats}"
+        kind="bar", title=f"Conversion Rate by {cats}"
     )
+    plt.ylabel("Conversion Rate")
+    plt.tight_layout()
+    plt.savefig(
+        FIGURES_PATH / f"bivariate_{cats}_conversion.png", dpi=150, bbox_inches="tight"
+    )
+    plt.close()
 
-# Price vs conversion relationship
-# Session duration vs conversion
-# Correlation matrix
+# **Bivariate Analysis**
+# Let's explore relationships between different features and purchase decisions
 
-# **Key Metrics to Calculate**
-# - Overall conversion rate
-# - Cart abandonment rate
-# - Average Order Value (AOV)
-# - Average session duration
-# - Average pages per session
-# - Bounce rate (1-page sessions)
+# ============================================================================
+# PRICE VS CONVERSION ANALYSIS
+# ============================================================================
+print("\n=== PRICE VS CONVERSION ANALYSIS ===")
+
+# pd.cut() - Bins continuous data into discrete intervals (first use)
+# Creates 10 equal-width bins from min to max price values
+# Returns a Categorical Series with interval labels like (0, 100], (100, 200], etc.
+price_bins = pd.cut(df["price"], bins=10)
+
+# .groupby() - Groups DataFrame by specified column(s) for aggregation (used earlier)
+# .agg() - Applies multiple aggregation functions at once (first use)
+# Here we calculate both mean (conversion rate) and count (sample size) per price bin
+price_conversion = df.groupby(price_bins)["purchase_decision"].agg(["mean", "count"])
+price_conversion.columns = ["Conversion_Rate", "Total_Sessions"]
+print("Conversion rate by price range:")
+print(price_conversion)
+
+# Visualize price vs conversion
+# plt.figure() - Creates a new figure with specified size in inches (used earlier)
+# figsize=(width, height) controls the plot dimensions
+plt.figure(figsize=(10, 6))
+
+# .plot(kind="bar") - Creates a bar chart from Series/DataFrame (used earlier)
+# color parameter sets the bar fill color
+price_conversion["Conversion_Rate"].plot(kind="bar", color="skyblue")
+
+# plt.title() - Sets the chart title (used earlier)
+plt.title("Conversion Rate by Price Range")
+
+# plt.xlabel() / plt.ylabel() - Set axis labels (first use)
+plt.xlabel("Price Range")
+plt.ylabel("Conversion Rate")
+
+# plt.xticks(rotation=45) - Rotates x-axis tick labels by 45 degrees (first use)
+# Useful when labels are long and would overlap horizontally
+plt.xticks(rotation=45)
+
+# plt.tight_layout() - Automatically adjusts subplot params for better fit (first use)
+# Prevents labels from being cut off at figure edges
+plt.tight_layout()
+
+# plt.savefig() - Saves the current figure to a file
+# dpi=150 sets resolution, bbox_inches='tight' removes extra whitespace
+plt.savefig(FIGURES_PATH / "price_vs_conversion.png", dpi=150, bbox_inches="tight")
+
+# plt.show() - Displays the figure (optional when saving)
+# Renders the plot and clears the current figure
+plt.show()
+plt.close()
+
+# ============================================================================
+# SESSION DURATION VS CONVERSION ANALYSIS
+# ============================================================================
+print("\n=== SESSION DURATION VS CONVERSION ANALYSIS ===")
+
+# Same binning approach as price - divides time_spent into 10 equal-width intervals
+time_bins = pd.cut(df["time_spent"], bins=10)
+time_conversion = df.groupby(time_bins)["purchase_decision"].agg(["mean", "count"])
+time_conversion.columns = ["Conversion_Rate", "Total_Sessions"]
+print("Conversion rate by session duration:")
+print(time_conversion)
+
+# Visualize session duration vs conversion (same pattern as price visualization)
+plt.figure(figsize=(10, 6))
+time_conversion["Conversion_Rate"].plot(kind="bar", color="lightgreen")
+plt.title("Conversion Rate by Session Duration")
+plt.xlabel("Time Spent Range (minutes)")
+plt.ylabel("Conversion Rate")
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig(
+    FIGURES_PATH / "session_duration_vs_conversion.png", dpi=150, bbox_inches="tight"
+)
+plt.show()
+plt.close()
+
+# ============================================================================
+# CORRELATION MATRIX
+# ============================================================================
+print("\n=== CORRELATION MATRIX ===")
+
+# .select_dtypes() - Filters columns by data type (first use)
+# include=[np.number] selects all numeric columns (int, float)
+# Returns a DataFrame with only the matching columns
+numeric_cols = df.select_dtypes(include=[np.number]).columns
+
+# .corr() - Computes pairwise Pearson correlation coefficients (first use)
+# Returns a square DataFrame where each cell [i,j] is correlation between columns i and j
+# Values range from -1 (perfect negative) to +1 (perfect positive), 0 = no correlation
+correlation_matrix = df[numeric_cols].corr()
+
+# Display correlation with purchase_decision
+print("Correlation with purchase_decision (target variable):")
+
+# .sort_values() - Sorts Series by values (used earlier)
+# ascending=False puts highest correlations first
+purchase_correlations = correlation_matrix["purchase_decision"].sort_values(
+    ascending=False
+)
+print(purchase_correlations)
+
+# Visualize correlation matrix as heatmap
+plt.figure(figsize=(12, 10))
+
+# sns.heatmap() - Creates a color-coded matrix visualization (first use)
+# Parameters:
+#   annot=True - Display correlation values in each cell
+#   cmap="coolwarm" - Color palette (blue for negative, red for positive)
+#   center=0 - Center the colormap at 0 (neutral correlation)
+#   fmt=".2f" - Format annotations to 2 decimal places
+sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", center=0, fmt=".2f")
+plt.title("Correlation Matrix of All Numeric Features")
+plt.tight_layout()
+plt.savefig(FIGURES_PATH / "correlation_matrix.png", dpi=150, bbox_inches="tight")
+plt.show()
+plt.close()
+
+# ============================================================================
+# KEY METRICS CALCULATION
+# ============================================================================
+print("\n=== KEY METRICS CALCULATION ===")
+
+# 1. Overall conversion rate
+# .mean() on a binary column (0/1) gives the proportion of 1s (conversion rate)
+overall_conversion = df["purchase_decision"].mean()
+print(f"1. Overall Conversion Rate: {overall_conversion:.2%}")
+
+# 2. Cart abandonment rate
+# Filter to users who added to cart, then calculate abandonment proportion
+cart_abandonment = df[df["add_to_cart"] == 1]["abandoned_cart"].mean()
+print(f"2. Cart Abandonment Rate: {cart_abandonment:.2%}")
+
+# 3. Average Order Value (AOV) - only for actual purchases
+# Filter to purchasers only, then calculate mean price
+aov = df[df["purchase_decision"] == 1]["price"].mean()
+print(f"3. Average Order Value (AOV): ${aov:.2f}")
+
+# 4. Average session duration
+avg_session_duration = df["time_spent"].mean()
+print(f"4. Average Session Duration: {avg_session_duration:.2f} seconds")
+
+# 5. Average pages per session
+avg_pages_per_session = df["pages_visited"].mean()
+print(f"5. Average Pages per Session: {avg_pages_per_session:.2f}")
+
+# 6. Bounce rate (1-page sessions)
+# Boolean comparison returns True/False, .mean() gives proportion of True values
+bounce_rate = (df["pages_visited"] == 1).mean()
+print(f"6. Bounce Rate (1-page sessions): {bounce_rate:.2%}")
+
+# ============================================================================
+# ADDITIONAL INSIGHTS
+# ============================================================================
+print("\n=== ADDITIONAL INSIGHTS ===")
+
+# len(df) - Returns number of rows in DataFrame (used earlier)
+print(f"Total sessions: {len(df)}")
+
+# .sum() on binary column counts the number of 1s (purchases)
+print(f"Total purchases: {df['purchase_decision'].sum()}")
+
+# Chain filter and sum to get total revenue from purchasers
+print(f"Total revenue: ${df[df['purchase_decision'] == 1]['price'].sum():.2f}")
+print(
+    f"Average discount applied: {df[df['purchase_decision'] == 1]['discount_applied'].mean():.2f}%"
+)
